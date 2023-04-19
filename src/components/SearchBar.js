@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import "./SearchBar.css"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function SearchBar() {
   const [search, setSearch] = useState([])
   const [data, setData] = useState([])
@@ -62,11 +65,12 @@ emojis.forEach((emoji) => {
   const handleCopy = (emoji) => {
     navigator.clipboard.writeText(emoji);
     handleShow()
-    alert("Copied to clipboard")
+    toast.success(`${emoji} copied to clipboard!`);
   }
 
   return (
     <div>
+      <ToastContainer position="top-center"/>
       <input type="text" placeholder="Search emoji" value={search} onChange={(e) => handleChange(e)} onInput={handleInput} style={{ width: "1050px", height: "70px", background: "#302C66", color: "#ffffff", border: "none", borderRadius: "15px", outline: "none", fontSize: "24px", fontWeight: "400", fontStyle: "normal", fontFamily: "Basis Grotesque Pro", textIndent: "25px" }} />
       <div className='container' style={{ width: "1050px", height: "297px", background: "#302C66", borderRadius: "15px", marginTop: "20px"}}>
         <div className='emoji' style={{ display: 'grid', gridTemplateColumns: 'repeat(13, 1fr)', gridGap: '10px', alignItems: "center", justifyContent: "center" }}>
