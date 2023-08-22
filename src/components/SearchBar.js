@@ -10,27 +10,6 @@ export default function SearchBar() {
     setSearch(e.target.value);
   }
 
-  const emojis = document.querySelectorAll('.emoji');
-
-  emojis.forEach((emoji) => {
-    emoji.addEventListener('mouseenter', (event) => {
-      const tooltip = document.createElement('div');
-      tooltip.classList.add('tooltip');
-      tooltip.textContent = 'Click to copy';
-      tooltip.style.position = 'absolute';
-      tooltip.style.top = `${event.target.offsetTop - 30}px`;
-      tooltip.style.left = `${event.target.offsetLeft}px`;
-      emoji.parentElement.appendChild(tooltip);
-    });
-
-    emoji.addEventListener('mouseleave', () => {
-      const tooltip = document.querySelector('.tooltip');
-      if (tooltip) {
-        tooltip.remove();
-      }
-    });
-  });
-
   const handleInput = () => {
     if (search !== '') {
       const API_KEY = 'f636eea0c4805503674c6268a69f45dd3ef130cd';
